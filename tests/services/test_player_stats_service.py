@@ -28,7 +28,6 @@ class TestPlayerStatsService(unittest.TestCase):
     def test_calculate_player_stats(self):
         result = self.player_stats_service.calculate_player_stats("John Doe")
 
-        print(result)
         expected_result = PlayerStats(
             playerName="John Doe",
             gamesPlayed=len(self.sample_game_stats),
