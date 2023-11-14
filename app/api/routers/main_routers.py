@@ -1,4 +1,4 @@
-# app/api/routers/main.py
+# app/api/routers/main_routers.py
 
 from fastapi import APIRouter
 from ..endpoints import player_stats

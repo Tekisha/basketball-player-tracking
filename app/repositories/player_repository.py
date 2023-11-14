@@ -48,3 +48,15 @@ def load_data_into_database(cursor,csv_file_path):
             ))
 
     cursor.connection.commit()
+
+
+class PlayerRepository:
+    def __init__(self, cursor):
+        self.cursor = cursor
+
+    def get_player_by_name(self, playerFullName: str):
+        self.cursor.execute('''
+            SELECT * FROM player_stats WHERE PLAYER = ?
+        ''', (playerFullName,))
+
+        return self.cursor.fetchall()
