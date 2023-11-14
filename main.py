@@ -1,34 +1,33 @@
 # app/main_routers.py
 
-from fastapi import FastAPI
-from app.api.routers import main_routers as main_router
-from app.repositories.player_repository import create_in_memory_database, load_data_into_database, PlayerRepository
+from fastapi import FastAPI, HTTPException
+
+from app.api.core.models.PlayerStats import PlayerStats
+from app.repositories.player_repository import PlayerRepository
+from app.services.player_stats_service import PlayerStatsService
+from app.utils.csv_parser import CsvParser
 
 app = FastAPI()
 
-# Include the router from the routers directory
-app.include_router(main_router.router)
+# Setup in-memory database and load data
+csv_file_path = "data/input_file_1.csv"
+game_stats_list = CsvParser.parse_csv(csv_file_path)
+player_repository = PlayerRepository(game_stats_list)
+player_stats_service = PlayerStatsService(player_repository)
+
+for stat in game_stats_list:
+    print(stat.player)
 
 
-def setup_database():
-    # Setup in-memory database and load data
-    csv_file_path = "data/input_file_1.csv"
-    connection, cursor = create_in_memory_database()
-    load_data_into_database(cursor, csv_file_path)
+@app.get("/stats/player/{playerFullName}", response_model=PlayerStats)
+def get_player_info(playerFullName: str):
+    player_stats = player_stats_service.calculate_player_stats(playerFullName)
+    print(player_stats)
 
-    # Print loaded data
-    cursor.execute('SELECT * FROM player_stats')
-    result = cursor.fetchall()
-    for row in result:
-        print(row)
+    # Check if the player is found
+    if player_stats is None:
+        raise HTTPException(status_code=404, detail="Player not found")
 
-    # Close the database connection
-    connection.close()
-
-    return PlayerRepository(cursor)
-
-
-# Run the setup_database function when the script is executed
-setup_database()
+    return player_stats
 
 
