@@ -13,7 +13,7 @@ class PlayerStatsService:
         self.player_repository = player_repository
 
     def calculate_player_stats(self,player_full_name):
-        player_stats_list = self.player_repository.get_player_by_name(player_full_name)
+        player_stats_list = self.player_repository.get_player_stats_by_name(player_full_name)
 
         if not player_stats_list:
             return None
@@ -59,9 +59,9 @@ class PlayerStatsService:
         games_played = len(player_stats_list)
 
         traditional_stats = Traditional(
-            freeThrows=FreeThrows(attempts=round(total_fta/games_played, 1), made=round(total_ftm/games_played, 1), shootingPercentage=ft_percentage),
-            twoPoints=TwoPoints(attempts=round(total_2pa/games_played, 1), made=round(total_2pm/games_played, 1), shootingPercentage=two_points_percentage),
-            threePoints=ThreePoints(attempts=round(total_3pa/games_played, 1), made=round(total_3pm/games_played, 1), shootingPercentage=three_points_percentage),
+            freeThrows=FreeThrows(attempts=round(total_fta/games_played, 1), made=round(total_ftm/games_played, 1), shootingPercentage=round(ft_percentage, 1)),
+            twoPoints=TwoPoints(attempts=round(total_2pa/games_played, 1), made=round(total_2pm/games_played, 1), shootingPercentage=round(two_points_percentage, 1)),
+            threePoints=ThreePoints(attempts=round(total_3pa/games_played, 1), made=round(total_3pm/games_played, 1), shootingPercentage=round(three_points_percentage, 1)),
             points=round(points/games_played, 1),
             rebounds=round(total_reb/games_played, 1),
             blocks=round(total_blk/games_played, 1),
@@ -71,10 +71,10 @@ class PlayerStatsService:
         )
 
         advanced_stats = Advanced(
-            valorization=valorization,
-            effectiveFieldGoalPercentage=effective_field_goal_percentage,
-            trueShootingPercentage=true_shooting_percentage,
-            hollingerAssistRatio=hollinger_assist_ratio
+            valorization=round(valorization, 1),
+            effectiveFieldGoalPercentage=round(effective_field_goal_percentage, 1),
+            trueShootingPercentage=round(true_shooting_percentage, 1),
+            hollingerAssistRatio=round(hollinger_assist_ratio, 1)
         )
 
         return PlayerStats(
