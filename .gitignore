@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+*.idea/
+
+# Environment-specific files
+*.env
+
+# Compiled files
+*.pyc
+
+# Dependency directories
+lib/
+lib64/
+bin/
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
