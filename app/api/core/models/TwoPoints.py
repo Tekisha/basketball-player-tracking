@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 
 
-class FreeThrows(BaseModel):
+class TwoPoints(BaseModel):
     attempts: float
     made: float
     shootingPercentage: float
+
