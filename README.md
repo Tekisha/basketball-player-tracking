@@ -26,6 +26,14 @@
 Pozicionirajte se u **../basketball-player-tracking** direkotrijumu (u njemu se nalazi main.py) i pokrenite uvicorn server iz terminala:
 **```uvicorn main:app --host 0.0.0.0 --port 8000```**
 
+Zatim mozete da pristupite aplikaciji na adresi: **http://localhost:8000**
+
+Specifikaciju API-ja možete pronaći na adresi: **http://localhost:8000/docs**
+
+Pristup API-ju možete testirati i preko Swagger UI-ja na adresi: **http://localhost:8000/redoc**
+
+API-ju možete pristupiti direktno i preko adrese: **http://localhost:8000/stats/player/{playerFullName}**
+
 *(ukolite želite pokrenuti aplikaciju pomoću nekog IDE-a potrebno je proveriti da sadrži sve potrebne zavisnosti)*
 
 ## Primer kako se testovi pokreću
