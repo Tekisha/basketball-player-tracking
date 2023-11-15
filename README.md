@@ -4,7 +4,7 @@
  Za izgradnju projekta potrebno je sledeće okruženje: 
  - **Python** (preporučena verzija: Python 3.12.0) 
  - **Pip** (Python paket menadžer) 
- ## Kako se radi build  
+ ## Postavljanje projekta  
  1. Klonirajte repozitorijum na lokalni računar: 
  **```bash git clone [url do repozitorijuma] ```** 
 2. Instalirajte neophodnih zavisnosti koristeći pip:
