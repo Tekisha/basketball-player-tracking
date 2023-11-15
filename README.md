@@ -1,16 +1,18 @@
 # Basketball player tracking
 
-## Opis okruženja potrebnog za build
+## Opis potrebnog okruženja
  Za izgradnju projekta potrebno je sledeće okruženje: 
  - **Python** (preporučena verzija: Python 3.12.0) 
  - **Pip** (Python paket menadžer) 
  ## Postavljanje projekta  
  1. Klonirajte repozitorijum na lokalni računar: 
- **```bash git clone [url do repozitorijuma] ```** 
+ **```git clone [url do repozitorijuma] ```** 
 2. Instalirajte neophodnih zavisnosti koristeći pip:
 	 **```pip install "fastapi" ```**
 	 **```pip install "uvicorn[standard]"```** 
 	 **```pip install pydantic ```**
+     **```pip install configparser ```**
+     
 
 ## Postavljanje željenog .csv fajla
 
