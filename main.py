@@ -33,6 +33,6 @@ def get_player_info(playerFullName: str):
 
     # Check if the player is found
     if player_stats is None:
-        raise HTTPException(status_code=404, detail="Player not found")
+        raise HTTPException(status_code=404, detail="Player not found", headers={"Explanation:": "Player not found"})
 
     return player_stats
